@@ -8,13 +8,29 @@ parameters:
     type: 'string'
     description: 'Message to send. Markdown supported.'
     required: true
+  channel:
+    type: 'string'
+    description: 'channel name form configuration'
+    default: 'default'
   webhook_url:
     type: 'string'
     description: 'Webhook url. The default webhook is used if empty.'
-    default: '{{ config_context.webhook_url.default }}'
-    required: true
   url:
     type: 'string'
     required: true
     immutable: true
-    default: '{{ webhook_url }}'
+    default: '{% if webhook_url %}{{ webhook_url }}{% else %}{{ config_context.webhook_urls[channel] }}{% endif %}'
+  method:
+    required: true
+    immutable: true
+    default: 'POST'
+  body:
+    type: 'string'
+    immutable: true
+    default: |
+      {
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+        "type": "AdaptiveCard",
+        "version": "1.0",
+        "text": "{{ message }}"
+      }

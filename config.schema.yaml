@@ -5,12 +5,6 @@ webhook_urls:
   required: true
   additionalProperties: true
   properties:
-    channels:
-      items:
-        name:
-          description: 'Identifier of the channel, this webhook belongs to'
-          type: 'string'
-        webhook:
-          description: 'The webhook given to you by Teams'
-          type: 'string'
-      required: true
+    webhook:
+      description: 'The webhook given to you by Teams'
+      type: 'string'
