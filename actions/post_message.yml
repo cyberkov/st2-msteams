@@ -1,0 +1,20 @@
+---
+name: 'post_message'
+runner_type: 'http-request'
+description: 'Post a message to the Teams channel.'
+enabled: true
+parameters:
+  message:
+    type: 'string'
+    description: 'Message to send. Markdown supported.'
+    required: true
+  webhook_url:
+    type: 'string'
+    description: 'Webhook url. The default webhook is used if empty.'
+    default: '{{ config_context.webhook_url.default }}'
+    required: true
+  url:
+    type: 'string'
+    required: true
+    immutable: true
+    default: '{{ webhook_url }}'
