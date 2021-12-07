@@ -1,6 +1,6 @@
 ---
 name: msteams
 description: StackStorm Microsoft Teams integration
-version: main
+version: 1.0.0
 author: Hannes Schaller
 email: admin@cyberkov.at
